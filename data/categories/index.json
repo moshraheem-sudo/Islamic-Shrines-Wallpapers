@@ -1,0 +1,17 @@
+{
+  "total_categories": 2,
+  "categories": [
+    {
+      "category": "العتبة العلوية المقدسة",
+      "slug": "alawi",
+      "count": 25,
+      "file": "categories/alawi.json"
+    },
+    {
+      "category": "العتبة العسكرية المقدسة",
+      "slug": "askari",
+      "count": 25,
+      "file": "categories/askari.json"
+    }
+  ]
+}
