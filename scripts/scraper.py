@@ -33,7 +33,7 @@ def main():
     wallpapers_file = os.path.join(data_dir, "wallpapers.json")
     version_file = os.path.join(data_dir, "version.json")
     stats_file = os.path.join(data_dir, "stats.json")
-    logs_file = os.path.join(base_dir, "logs", "update_log.md")
+    logs_file = os.path.join(base_dir, 'logs', 'update_log.md'); os.makedirs(os.path.dirname(logs_file), exist_ok=True)
     images_dir = os.path.join(base_dir, "images")
     thumbs_dir = os.path.join(base_dir, "thumbnails")
 
