@@ -4,13 +4,13 @@
     {
       "category": "العتبة العلوية المقدسة",
       "slug": "alawi",
-      "count": 25,
+      "count": 115,
       "file": "categories/alawi.json"
     },
     {
       "category": "العتبة العسكرية المقدسة",
       "slug": "askari",
-      "count": 25,
+      "count": 35,
       "file": "categories/askari.json"
     }
   ]

@@ -1,8 +1,10 @@
 {
-  "total_items": 50,
+  "total_items": 150,
   "per_page": 50,
-  "total_pages": 1,
+  "total_pages": 3,
   "pages_urls": [
-    "pages/page_1.json"
+    "pages/page_1.json",
+    "pages/page_2.json",
+    "pages/page_3.json"
   ]
 }

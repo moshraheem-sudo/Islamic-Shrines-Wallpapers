@@ -5,6 +5,7 @@ import argparse
 from datetime import datetime, timezone
 from adapters import get_adapter
 from processor import ImageProcessor
+from exporter import export_paginated_and_categories
 
 def load_json(filepath, default):
     if os.path.exists(filepath):
@@ -21,7 +22,7 @@ def save_json(filepath, data):
 
 def main():
     parser = argparse.ArgumentParser(description="Islamic Shrines Wallpapers Engine")
-    parser.add_argument("--max-images", type=int, default=50, help="Max images to discover/process per run")
+    parser.add_argument("--max-images", type=int, default=100, help="Max new images to discover/process per run")
     parser.add_argument("--source", type=str, default=None, help="Filter by specific source id")
     parser.add_argument("--repo-owner", type=str, default="moshraheem-sudo", help="GitHub repo owner")
     parser.add_argument("--repo-name", type=str, default="Islamic-Shrines-Wallpapers", help="GitHub repo name")
@@ -33,7 +34,8 @@ def main():
     wallpapers_file = os.path.join(data_dir, "wallpapers.json")
     version_file = os.path.join(data_dir, "version.json")
     stats_file = os.path.join(data_dir, "stats.json")
-    logs_file = os.path.join(base_dir, 'logs', 'update_log.md'); os.makedirs(os.path.dirname(logs_file), exist_ok=True)
+    logs_file = os.path.join(base_dir, "logs", "update_log.md")
+    os.makedirs(os.path.dirname(logs_file), exist_ok=True)
     images_dir = os.path.join(base_dir, "images")
     thumbs_dir = os.path.join(base_dir, "thumbnails")
 
@@ -63,7 +65,7 @@ def main():
 
     print(f"=== Starting Islamic Shrines Scraper ===")
     print(f"Known wallpapers in database: {len(existing_wallpapers)}")
-    print(f"Target max new images: {args.max_images}")
+    print(f"Target max new images this run: {args.max_images}")
 
     for src in sources_list:
         if not src.get("enabled", True):
@@ -111,21 +113,23 @@ def main():
                     stats_info.setdefault("by_category", {})[cat] = stats_info.get("by_category", {}).get(cat, 0) + 1
                     stats_info.setdefault("by_source", {})[s_name] = stats_info.get("by_source", {}).get(s_name, 0) + 1
 
-                    print(f"  [+] Added ({new_added}/{args.max_images}): {record['title']} | {record['width']}x{record['height']} ({record['file_size']} B)")
+                    print(f"  [+] Added ({new_added}/{args.max_images}): {record['title']} | {record['width']}x{record['height']}")
             except Exception as e:
-                print(f"  [-] Failed to process {item.original_url}: {e}")
+                print(f"  [-] Skipped {item.original_url}: {e}")
                 failed_count += 1
 
     run_end = datetime.now(timezone.utc)
     duration_sec = round((run_end - run_start).total_seconds(), 2)
 
-    # Save wallpapers & version if new added
-    if new_added > 0 or not os.path.exists(wallpapers_file):
-        version_info["version"] = version_info.get("version", 0) + 1
-        version_info["last_updated"] = run_end.strftime("%Y-%m-%dT%H:%M:%SZ")
-        version_info["total_wallpapers"] = len(existing_wallpapers)
-        save_json(wallpapers_file, existing_wallpapers)
-        save_json(version_file, version_info)
+    # Always export pages and categories for client efficiency
+    export_paginated_and_categories(base_dir, existing_wallpapers, per_page=50)
+
+    # Save wallpapers & version
+    version_info["version"] = version_info.get("version", 0) + 1
+    version_info["last_updated"] = run_end.strftime("%Y-%m-%dT%H:%M:%SZ")
+    version_info["total_wallpapers"] = len(existing_wallpapers)
+    save_json(wallpapers_file, existing_wallpapers)
+    save_json(version_file, version_info)
 
     # Update stats
     stats_info["total_saved"] = len(existing_wallpapers)
@@ -143,7 +147,7 @@ def main():
         f"\n## Update Run: {run_end.strftime('%Y-%m-%d %H:%M:%S UTC')}\n"
         f"- **New Wallpapers Added**: {new_added}\n"
         f"- **Duplicates Skipped**: {duplicate_count}\n"
-        f"- **Failed / Invalid**: {failed_count}\n"
+        f"- **Failed / Skipped**: {failed_count}\n"
         f"- **Total Library Size**: {len(existing_wallpapers)}\n"
         f"- **Execution Time**: {duration_sec}s\n"
     )

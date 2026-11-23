@@ -1,4 +1,4 @@
-﻿# Islamic Shrines Wallpapers Library
+# Islamic Shrines Wallpapers Library
 
 [![Auto Update Islamic Wallpapers](https://github.com/moshraheem-sudo/Islamic-Shrines-Wallpapers/actions/workflows/update_wallpapers.yml/badge.svg)](https://github.com/moshraheem-sudo/Islamic-Shrines-Wallpapers/actions/workflows/update_wallpapers.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)

@@ -1,21 +1,21 @@
 {
   "total_scraped": 0,
-  "total_saved": 50,
+  "total_saved": 150,
   "total_duplicates": 0,
   "total_failed": 0,
   "by_category": {
-    "العتبة العلوية المقدسة": 25,
-    "العتبة العسكرية المقدسة": 25
+    "العتبة العلوية المقدسة": 115,
+    "العتبة العسكرية المقدسة": 35
   },
   "by_source": {
-    "شبكة الإمام علي (ع) ميديا": 25,
-    "معرض العتبة العسكرية المقدسة الرسمي": 25
+    "شبكة الإمام علي (ع) ميديا": 115,
+    "معرض العتبة العسكرية المقدسة الرسمي": 35
   },
   "last_run": {
-    "timestamp": "2026-11-23T14:36:43Z",
-    "duration_seconds": 64.72,
-    "new_added": 50,
-    "duplicates": 25,
-    "failed": 0
+    "timestamp": "2026-11-23T15:01:11Z",
+    "duration_seconds": 965.9,
+    "new_added": 100,
+    "duplicates": 43,
+    "failed": 1
   }
 }
