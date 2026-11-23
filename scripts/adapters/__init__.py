@@ -5,10 +5,12 @@ Provides unified interfaces for multiple holy shrine media centers.
 from .base import BaseAdapter, DiscoveredItem
 from .imamali import ImamAliAdapter
 from .alaskarian import AlAskarianAdapter
+from .alkafeel import AlKafeelAdapter
 
 ADAPTER_MAP = {
     "ImamAliAdapter": ImamAliAdapter,
     "AlAskarianAdapter": AlAskarianAdapter,
+    "AlKafeelAdapter": AlKafeelAdapter,
 }
 
 def get_adapter(name: str):

@@ -1,17 +1,59 @@
 {
-  "total_categories": 2,
+  "total_categories": 9,
   "categories": [
     {
       "category": "العتبة العلوية المقدسة",
       "slug": "alawi",
-      "count": 115,
+      "count": 186,
       "file": "categories/alawi.json"
     },
     {
       "category": "العتبة العسكرية المقدسة",
       "slug": "askari",
-      "count": 35,
+      "count": 186,
       "file": "categories/askari.json"
+    },
+    {
+      "category": "المناسبات والفعاليات الدينية",
+      "slug": "events",
+      "count": 71,
+      "file": "categories/events.json"
+    },
+    {
+      "category": "العتبة العباسية المقدسة",
+      "slug": "abbasi",
+      "count": 71,
+      "file": "categories/abbasi.json"
+    },
+    {
+      "category": "العتبة الحسينية المقدسة",
+      "slug": "hussaini",
+      "count": 71,
+      "file": "categories/hussaini.json"
+    },
+    {
+      "category": "العتبة الكاظمية المقدسة",
+      "slug": "kadhimi",
+      "count": 71,
+      "file": "categories/kadhimi.json"
+    },
+    {
+      "category": "العتبة الرضوية المقدسة",
+      "slug": "ridhawi",
+      "count": 71,
+      "file": "categories/ridhawi.json"
+    },
+    {
+      "category": "المراقد والمزارات الإسلامية",
+      "slug": "shrines",
+      "count": 352,
+      "file": "categories/shrines.json"
+    },
+    {
+      "category": "العمارة والزخارف الإسلامية",
+      "slug": "architecture",
+      "count": 71,
+      "file": "categories/architecture.json"
     }
   ]
 }
