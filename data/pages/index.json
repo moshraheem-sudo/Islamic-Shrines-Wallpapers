@@ -1,7 +1,7 @@
 {
-  "total_items": 1150,
+  "total_items": 1192,
   "per_page": 50,
-  "total_pages": 23,
+  "total_pages": 24,
   "pages_urls": [
     "pages/page_1.json",
     "pages/page_2.json",
@@ -25,6 +25,7 @@
     "pages/page_20.json",
     "pages/page_21.json",
     "pages/page_22.json",
-    "pages/page_23.json"
+    "pages/page_23.json",
+    "pages/page_24.json"
   ]
 }
